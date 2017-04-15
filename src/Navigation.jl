@@ -17,10 +17,14 @@ export
 
   # rotational kinematics
   crossmat, crossmat1,
-  poissonUpdate
+  poissonUpdate,
+
+  # sensors
+  simulateBrownianMotion
 
 include("coordinates.jl")
 include("rotations.jl")
 include("kinematics.jl")
+include("sensors.jl")
 
 end

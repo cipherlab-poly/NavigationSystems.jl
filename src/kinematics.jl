@@ -5,8 +5,12 @@
 """
     m = crossmat(a)
 Input: a is a 3 dimensional vector
-Output: m, a static array, so that typeof(m) = SMatrix{3, 3, eltype(a)).
-m is the 3x3 matrix (tensor) representing the cross product operator a x .
+
+Output: `m`, a static array, so that `typeof(m) = SMatrix{3, 3, eltype(a))`.
+`m` is the 3x3 matrix representing the cross product operator a x .
+
+Use `m = crossmat1(a)` instead if you want an output in the form of a standard matrix,
+without the overhead of conversion from a static array.
 """
 function crossmat(a::AbstractVector)
   z = zero(eltype(a))
@@ -32,13 +36,14 @@ function crossmat1(a::AbstractVector)
            -a[2]  a[1]   z   ]
 end
 
+#= # is this necessary?
 function crossmat1(a::SVector{3})
     z = zero(eltype(a))
     a_x = [  z   -a[3]  a[2];
             a[3]   z   -a[1];
            -a[2]  a[1]   z   ]
 end
-
+=#
 
 # Attitude Estimation - Second order Poisson integration schemes
 # ω : angular velocity of b wrt a expressed in b
