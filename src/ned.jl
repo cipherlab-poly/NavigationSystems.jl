@@ -23,8 +23,7 @@ NED{T}(x :: T, y :: T) = NED(x, y, zero(T))
     T = promote_type(promote_type(typeof(x),typeof(y)), typeof(z))
     NED{T}(x,y,z)
 end
-Base.show(io::IO, ::MIME"text/plain", ned::NED) =
-  print(io, "NED($(ned.e), $(ned.n), $(ned.d))")
+Base.show(io::IO, ::MIME"text/plain", ned::NED) = print(io, "NED($(ned.n), $(ned.e), $(ned.d))")
 
 # See Geodesy.jl --> conversion.jl
 NED(ned::NED, datum) = ned
