@@ -22,7 +22,7 @@ export
   # sensors
   simulateBrownianMotion
 
-include("coordinates.jl")
+include("ned.jl")
 include("rotations.jl")
 include("kinematics.jl")
 include("sensors.jl")
