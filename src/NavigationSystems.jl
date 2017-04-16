@@ -12,7 +12,7 @@ export
   # coordinates, complementing Geodesy.jl
   NED,
   NEDfromECEF, ECEFfromNED, NEDfromLLA, LLAfromNED, NEDfromUTMZ, UTMZfromNED,
-  NEDfromUTM, UTMfromNED, NEDfromENU, ENUfromNED
+  NEDfromUTM, UTMfromNED, NEDfromENU, ENUfromNED,
 
   # rotation utilities
   closestOrthMatrix,
