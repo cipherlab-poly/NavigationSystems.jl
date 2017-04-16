@@ -1,19 +1,19 @@
-# Navigation.jl
+# NavigationSystems.jl
 A Julia package supporting the design of multi-sensor navigation systems
 
 
 ## Set-up ##
 
 ```julia
-Pkg.clone("https://github.com/cipherlab-poly/Navigation.jl.git")
-using Navigation
+Pkg.clone("https://github.com/cipherlab-poly/NavigationSystems.jl.git")
+using NavigationSystems
 ```
 
 
 ## Run Tests ##
 
 ```julia
-Pkg.test("Navigation")
+Pkg.test("NavigationSystems")
 ```
 
 

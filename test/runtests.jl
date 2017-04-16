@@ -1,5 +1,5 @@
 #using Nav
-using Navigation
+using NavigationSystems
 using Base.Test
 using StaticArrays
 
