@@ -4,6 +4,8 @@ A Julia package supporting the design of multi-sensor navigation systems
 
 ## Set-up ##
 
+This version is frozen, to be used with Julia v0.5.
+
 ```julia
 Pkg.clone("https://github.com/cipherlab-poly/NavigationSystems.jl.git")
 using NavigationSystems
