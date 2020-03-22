@@ -8,22 +8,25 @@
 # Should probably be done more efficiently using metaprogramming
 
 # See Geodesy.jl --> points.jl
+const FieldVector{T} = StaticArrays.FieldVector{3, T}
+
 """
     NED(n, e, d = 0.0)
 North-East-Down (NED) coordinates. A local Cartesian coordinate system.
 Defined similarly to Geodesy.ENU
 """
-immutable NED{T <: Number} <: FieldVector{T}
+struct NED{T <: Number} <: FieldVector{T}
     n::T
     e::T
     d::T
 end
-NED{T}(x :: T, y :: T) = NED(x, y, zero(T))
+NED(x :: T, y :: T) where {T} = NED(x, y, zero(T))
 @inline function NED(x,y,z)
     T = promote_type(promote_type(typeof(x),typeof(y)), typeof(z))
     NED{T}(x,y,z)
 end
 Base.show(io::IO, ::MIME"text/plain", ned::NED) = print(io, "NED($(ned.n), $(ned.e), $(ned.d))")
+
 
 # See Geodesy.jl --> conversion.jl
 NED(ned::NED, datum) = ned
@@ -44,10 +47,10 @@ ENU(ned::NED) = ENUfromNED(ned)
 # See Geodesy.jl --> transformations.jl
 
 # Conversion between NED and ENU frames assumed to be centered at the same origin
-immutable NEDfromENU <: Transformation
+struct NEDfromENU <: Transformation
 end
 NEDfromENU(enu::ENU) = NED(enu.n, enu.e, -enu.u)
-immutable ENUfromNED <: Transformation
+struct ENUfromNED <: Transformation
 end
 ENUfromNED(ned::NED) = ENU(ned.e, ned.n, -ned.d)
 
@@ -59,7 +62,7 @@ Construct a `Transformation` object to convert from global `ECEF` coordinates
 to local `NED` coordinates centered at the `origin`. This object pre-caches both the
 ECEF coordinates and latitude and longitude of the origin for maximal efficiency.
 """
-immutable NEDfromECEF{T} <: Transformation
+struct NEDfromECEF{T} <: Transformation
     origin::ECEF{T}
     lat::T
     lon::T
@@ -104,7 +107,7 @@ Construct a `Transformation` object to convert from local `NED` coordinates
 centred at `origin` to global `ECEF` coodinates. This object pre-caches both the
 ECEF coordinates and latitude and longitude of the origin for maximal efficiency.
 """
-immutable ECEFfromNED{T} <: Transformation
+struct ECEFfromNED{T} <: Transformation
     origin::ECEF{T}
     lat::T
     lon::T

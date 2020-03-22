@@ -1,12 +1,12 @@
-__precompile__()
+#__precompile__()
 
 module NavigationSystems
 
 using StaticArrays
 using CoordinateTransformations, Rotations
-using PolarFact
 using Geodesy
-using NMEA
+#using PolarFact
+#using NMEA
 
 export
   # coordinates, complementing Geodesy.jl
